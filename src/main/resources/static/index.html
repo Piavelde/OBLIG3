@@ -7,58 +7,110 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
 </head>
-<body>
 
-<!-- Dropdownvindu for valg av kinobilletter -->
-<div class="container">
-    <h1>Bestilling av kinobilletter</h1>
-    <form onsubmit="bekreftOrdre(); return false">
-        <div class="form-group">
-            <label for="velgFilm">Choose movie:</label>
-            <select class="form-control" id="velgFilm" required>
-                <option value="">Velg film her</option>
-                <option value="Shrek">Shrek</option>
-                <option value="Terkel i knipe">Terkel i knipe</option>
-                <option value="Sonic 2">Sonic 2</option>
-            </select>
+<body class="bg-light">
+
+<!--CSS stil -->
+<style>
+    body {
+        font-family: Arial;
+        color: black;
+        font-size: 1.2rem;
+        text-align: left;
+    }
+</style>
+
+
+<div class="container" class="p-6"> <!--Bootstrap-klasser -->
+    <div class="row justify-content-start"> <!--Kolonne- og radoppsett -->
+        <div class="col-sm-8">
+            <h1>Bestilling av kinobilletter</h1>
+
+            <p>
+                <!--Dropdownvindu for valg av kinobilletter -->
+                <label for="velg">Velg en film:</label>
+                <select id="velg" class="form-control">
+                    <option style="display:none" value="">Velg film her</option>
+                    <option>Shrek</option>
+                    <option>Terkel i knipe</option>
+                    <option>Sonic 2</option>
+                </select>
+                <!-- Oppretter feilmelding -->
+                <span id="velgAlert"></span>
+                </p>
+
+            <p>
+                <!-- Oppretter et inputfelt for antall billetter -->
+                <label for="antall">Antall billetter:</label>
+                <input type="text" class="form-control" id="antall">
+                <!-- Oppretter feilmelding -->
+                <span id="antallAlert"></span>
+            </p>
+
+
+            <table>
+                <tr>  <!--Definerer en rad i tabellen -->
+                    <td> <!--Definerer en kolonne i tabellen-->
+
+                        <!-- Oppretter et inputfelt for fornavn -->
+                <label for="fNavn">Fornavn:</label>
+                <input type="text" class="form-control" id="fNavn">
+                        <!-- Oppretter feilmelding -->
+                <span id="fNavnAlert"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <!-- Oppretter et inputfelt for etternavn -->
+                <label for="eNavn">Etternavn:</label>
+                <input type="text" class="form-control" id="eNavn">
+                        <!-- Oppretter feilmelding -->
+                <span id="eNavnAlert"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <!-- Oppretter et inputfelt for telefonnummer -->
+                <label for="tlfNummer">Telefonnummer:</label>
+                <input type="text" class="form-control" id="tlfNummer">
+                        <!-- Oppretter feilmelding -->
+                <span id="tlfAlert"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <!-- Oppretter et inputfelt for email -->
+                <label for="epost">Epost:</label>
+                <input type="email" class="form-control" id="epost">
+                        <!-- Oppretter feilmelding -->
+                <span id="epostAlert"></span>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Oppretter knappen "Kjøp billett" -->
+            <div class="pt-3 pb-3">
+                <button onclick="kjopBillett()" class="kjopBillettKnapp">Kjøp billett</button>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label for="antall">Antall:</label>
-            <input type="text" class="form-control" id="antall">
-        </div>
-
-        <div class="form-group">
-            <label for="fornavn">Fornavn:</label>
-            <input type="text" class="form-control" id="fornavn">
-        </div>
-
-        <div class="form-group">
-            <label for="etternavn">Etternavn:</label>
-            <input type="text" class="form-control" id="etternavn">
-        </div>
-
-        <div class="form-group">
-            <label for="telefonnummer">Telefonnummer:</label>
-            <input type="text" class="form-control" id="telefonnummer">
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" class="form-control" id="email">
-        </div>
-    <br>
-        <button type="submit" id="KjopBillett" class="btn btn-primary">Kjøp billett</button>
-
-    </form>
-    <br>
-    <br>
-    <h3>Alle billetter:</h3>
-    <div id="output"></div>
-    <button id="slettAlleBilletter" class="btn btn-danger" onclick="slettBilletter()">Slett alle billettene</button>
+    </div>
 
 
+    <!--Oppretter struktur for å vise alle billetter -->
+            <div class="row justify-content-start">
+                <div class="col-md-8">
+                    <h2>Alle billetter</h2>
+                    <div id="arrayField"></div>
+                    <div class="pt-3">
+
+                        <!-- Oppretter en knapp som sletter alle billetter -->
+                        <button onclick="slettBilletter()" class="slettBillettKnapp"> Slett alle billetter </button>
+                    </div>
+                </div>
+            </div>
 </div>
 </body>
 </html>
-
